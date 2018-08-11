@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+
+        applicationId "com.heady.ecommerce"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            def BASE_URL = "https://stark-spire-93433.herokuapp.com/"
+            dimension = "version"
+            applicationIdSuffix ".dev"
+            buildConfigField("String", "BASE_URL", "\"${BASE_URL}\"")
+        }
+
+        stage {
+            def BASE_URL = "https://stark-spire-93433.herokuapp.com/"
+            dimension = "version"
+            applicationIdSuffix ".stage"
+            buildConfigField("String", "BASE_URL", "\"${BASE_URL}\"")
+        }
+
+        prod {
+            def BASE_URL = "https://stark-spire-93433.herokuapp.com/"
+            dimension = "version"
+            buildConfigField("String", "BASE_URL", "\"${BASE_URL}\"")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //App Compat
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    //Constraint Layout
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //Architectural components
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Webserivce
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.4.0'
+    //Dagger
+    implementation 'com.google.dagger:dagger-android:2.15'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
+    //Room
+    def room_version = "1.1.1"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    //RecyclerView
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+
+    //Page Indicator
+    implementation "cz.intik:overflow-pager-indicator:1.2.1"
+}

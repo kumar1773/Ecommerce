@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffffff</color>
+    <color name="mat_0">#EF5350</color>
+    <color name="mat_1">#F44336</color>
+    <color name="mat_2">#9C27B0</color>
+    <color name="mat_3">#1976D2</color>
+    <color name="mat_4">#F57C00</color>
+    <color name="mat_5">#FF5252</color>
+    <color name="mat_6">#C62828</color>
+    <color name="mat_7">#BA68C8</color>
+    <color name="mat_8">#F1D32F2F</color>
+    <color name="mat_9">#7FD81B60</color>
+</resources>
